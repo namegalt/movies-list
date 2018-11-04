@@ -7,12 +7,12 @@ const App = () => {
     const [moviesWillWatch, set] = useState([])
 
 
-    function setToWishes(title) {
+    const setToWishes = title => {
         const willWatch = [...moviesWillWatch, title]
         set(willWatch)
     }
 
-    function removeFromWishes(title){
+    const removeFromWishes = (title) => {
         set(moviesWillWatch.filter(i => i !== title))
     }
 

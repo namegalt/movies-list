@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
+import {MovieCard} from './components.js'
 
 const MovieItem = (props) => {
 
     const [status, set] = useState(false)
 
-    function hadleClick() {
+    const hadleClick = () => {
         set(!status)
         console.log(status)
-        status ? props.removeFromWishes(props.movie.title) : props.setToWishes(props.movie.title)
+        status ? props.removeFromWishes(props.movie) : props.setToWishes(props.movie)
     }
 
     return (
-    <div>
-        <div>{props.movie.title}</div>
+    <MovieCard status={status}>
+        <img src={`https://image.tmdb.org/t/p/w500${props.movie.backdrop_path ||
+            props.movie.poster_path}`} alt='img'></img>
+        <h3>{props.movie.title}</h3>
+        <div>{props.movie.vote_average}</div>
         <button onClick={hadleClick}>add to wishes</button>
-    </div>
+    </MovieCard>
     )
 }
 
